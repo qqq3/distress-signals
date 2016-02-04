@@ -49,6 +49,36 @@ public class FlashlightFragment extends Fragment
                 PackageManager.FEATURE_CAMERA_FLASH);
     }
 
+    private void onFlash()
+    {
+        if (!isFlashOn) {
+            if (mCamera == null || parameters == null) {
+                return;
+            }
+
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+            mCamera.setParameters(parameters);
+            mCamera.startPreview();
+
+            isFlashOn = true;
+        }
+    }
+
+    private void offFlash()
+    {
+        if (isFlashOn) {
+            if (mCamera == null || parameters == null) {
+                return;
+            }
+
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+            mCamera.setParameters(parameters);
+            mCamera.startPreview();
+
+            isFlashOn = false;
+        }
+    }
+
     private void getCameraInstance()
     {
         mCamera = null;
