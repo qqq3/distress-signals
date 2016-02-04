@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import android.widget.Toast;
 
 public class FlashlightFragment extends Fragment
 {
+    private static final String TAG = "FlashlightFragment";
+
     private Camera mCamera;
+    private Camera.Parameters parameters;
     private boolean isFlashOn;
 
     private Button mOnOffFlash;
@@ -43,5 +47,17 @@ public class FlashlightFragment extends Fragment
     {
         return context.getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_CAMERA_FLASH);
+    }
+
+    private void getCameraInstance()
+    {
+        mCamera = null;
+
+        try {
+            mCamera = Camera.open(0);
+            Camera.Parameters parameters = mCamera.getParameters();
+        } catch (Exception e) {
+            Log.d(TAG, "Camera is not available");
+        }
     }
 }
