@@ -13,4 +13,28 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"/>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TableRow
+            android:gravity="center_horizontal|center_vertical">
+
+            <Button
+                android:id="@+id/location"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/colorAccent"/>
+
+            <Button
+                android:id="@+id/flashlight_signals"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/colorAccent"/>
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>
