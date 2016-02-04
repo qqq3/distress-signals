@@ -18,7 +18,7 @@ public class FlashlightFragment extends Fragment
 
     private Camera mCamera;
     private Camera.Parameters parameters;
-    private boolean isFlashOn;
+    private boolean isFlashOn = false;
 
     private Button mOnOffFlash;
 
@@ -34,7 +34,18 @@ public class FlashlightFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_flashlight, parent, false);
 
         mOnOffFlash = (Button) v.findViewById(R.id.flashlight_on_off);
-
+        mOnOffFlash.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (isFlashOn) {
+                    offFlash();
+                } else {
+                    onFlash();
+                }
+            }
+        });
         if (!checkFlash(getActivity())) {
             Toast.makeText(getActivity(), R.string.flashNotHasMessage, Toast.LENGTH_SHORT).show();
             mOnOffFlash.setEnabled(false);
@@ -49,6 +60,25 @@ public class FlashlightFragment extends Fragment
                 PackageManager.FEATURE_CAMERA_FLASH);
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        getCameraInstance();
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+        if (mCamera != null) {
+            mCamera.release();
+            mCamera = null;
+        }
+    }
+
     private void onFlash()
     {
         if (!isFlashOn) {
@@ -56,7 +86,8 @@ public class FlashlightFragment extends Fragment
                 return;
             }
 
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+            parameters = mCamera.getParameters();
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
             mCamera.setParameters(parameters);
             mCamera.startPreview();
 
@@ -71,6 +102,7 @@ public class FlashlightFragment extends Fragment
                 return;
             }
 
+            parameters = mCamera.getParameters();
             parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
             mCamera.setParameters(parameters);
             mCamera.startPreview();
@@ -85,7 +117,7 @@ public class FlashlightFragment extends Fragment
 
         try {
             mCamera = Camera.open(0);
-            Camera.Parameters parameters = mCamera.getParameters();
+            parameters = mCamera.getParameters();
         } catch (Exception e) {
             Log.d(TAG, "Camera is not available");
         }
