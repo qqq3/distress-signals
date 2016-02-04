@@ -8,12 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class FlashlightFragment extends Fragment
 {
     private Camera mCamera;
     private boolean isFlashOn;
+
+    private Button mOnOffFlash;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -26,10 +29,11 @@ public class FlashlightFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_flashlight, parent, false);
 
+        mOnOffFlash = (Button) v.findViewById(R.id.flashlight_on_off);
+
         if (!checkFlash(getActivity())) {
-
             Toast.makeText(getActivity(), R.string.flashNotHasMessage, Toast.LENGTH_SHORT).show();
-
+            mOnOffFlash.setEnabled(false);
         }
 
         return v;
