@@ -33,7 +33,8 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorAccent"
+                android:onClick="startFlashlightActivity"/>
         </TableRow>
     </TableLayout>
 
