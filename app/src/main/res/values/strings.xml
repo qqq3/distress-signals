@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Distress Signals</string>
-    <string name="flashNotHasMessage">Sorry, your device doesn't support flash light!</string>
+    <string name="flashNotHasMessage">"Sorry, your device doesn't support flash light!"</string>
 </resources>
