@@ -23,4 +23,10 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(MainActivity.this, FlashlightActivity.class);
         startActivity(intent);
     }
+
+    public void startLocationActivity(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+        startActivity(intent);
+    }
 }
