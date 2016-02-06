@@ -20,6 +20,8 @@ public class FlashlightFragment extends Fragment
     private Camera.Parameters parameters;
     private boolean isFlashOn = false;
 
+    private static String SOS = "0101010101010101010";
+
     private Button mOnOffFlash;
 
     @Override
@@ -46,10 +48,21 @@ public class FlashlightFragment extends Fragment
                 }
             }
         });
+
         if (!checkFlash(getActivity())) {
             Toast.makeText(getActivity(), R.string.flashNotHasMessage, Toast.LENGTH_SHORT).show();
             mOnOffFlash.setEnabled(false);
         }
+
+        Button mSosButton = (Button) v.findViewById(R.id.sos_signal);
+        mSosButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                sosSignal();
+            }
+        });
 
         return v;
     }
@@ -122,6 +135,28 @@ public class FlashlightFragment extends Fragment
             parameters = mCamera.getParameters();
         } catch (Exception e) {
             Log.d(TAG, "Camera is not available");
+        }
+    }
+
+    private void sosSignal()
+    {
+        for (int i = 0; i < SOS.length(); i++) {
+            if (SOS.charAt(i) == '0') {
+                offFlash();
+            } else {
+                onFlash();
+            }
+            try {
+                if ((SOS.charAt(i) == '1') && (i < 7 && i > 11)) {
+                    Thread.sleep(300);
+                } else if ((SOS.charAt(i) == '1') && (i > 6 && i < 12)) {
+                    Thread.sleep(900);
+                } else {
+                    Thread.sleep(300);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
