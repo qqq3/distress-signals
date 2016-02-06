@@ -13,9 +13,8 @@
         <TableRow
             android:gravity="center_horizontal|center_vertical">
 
-            <Button
+            <ToggleButton
                 android:id="@+id/flashlight_on_off"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
@@ -24,7 +23,6 @@
 
             <Button
                 android:id="@+id/sos_signal"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
