@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class FlashlightFragment extends Fragment
 {
@@ -22,7 +24,7 @@ public class FlashlightFragment extends Fragment
 
     private static String SOS = "0101010101010101010";
 
-    private Button mOnOffFlash;
+    private ToggleButton mOnOffFlash;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -35,13 +37,13 @@ public class FlashlightFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_flashlight, parent, false);
 
-        mOnOffFlash = (Button) v.findViewById(R.id.flashlight_on_off);
-        mOnOffFlash.setOnClickListener(new View.OnClickListener()
+        mOnOffFlash = (ToggleButton) v.findViewById(R.id.flashlight_on_off);
+        mOnOffFlash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
-            public void onClick(View v)
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                if (isFlashOn) {
+                if (!isChecked) {
                     offFlash();
                 } else {
                     onFlash();
@@ -63,7 +65,6 @@ public class FlashlightFragment extends Fragment
                 sosSignal();
             }
         });
-
         return v;
     }
 
