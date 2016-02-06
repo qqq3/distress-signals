@@ -77,6 +77,8 @@ public class FlashlightFragment extends Fragment
             mCamera.release();
             mCamera = null;
         }
+
+        isFlashOn = false;
     }
 
     private void onFlash()
