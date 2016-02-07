@@ -28,6 +28,7 @@ public class LocationFragment extends Fragment
     private TextView latitudeTextView;
     private TextView longitudeTextView;
     private Button findCurrentLocation;
+    private boolean isGPSEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -42,7 +43,7 @@ public class LocationFragment extends Fragment
 
         locationManager =
                 (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        final boolean isGPSEnabled =
+        isGPSEnabled =
                 locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
                         locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
@@ -66,6 +67,16 @@ public class LocationFragment extends Fragment
         return v;
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        isGPSEnabled = locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
+                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    @Override
     public void onDestroy()
     {
         super.onDestroy();
