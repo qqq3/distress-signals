@@ -3,4 +3,8 @@
     <string name="flashNotHasMessage">"Sorry, your device doesn't support flash light!"</string>
     <string name="latitude_label">Latitude: </string>
     <string name="longitude_label">Longitude: </string>
+    <string name="settingsDialogTitle">GPS disable</string>
+    <string name="settingsDialogMessage">GPS is not enabled. Do you want to go to settings menu?</string>
+    <string name="settingsDialog_positiveButton">Settings</string>
+    <string name="settingsDialog_negativeButton">Cancel</string>
 </resources>
