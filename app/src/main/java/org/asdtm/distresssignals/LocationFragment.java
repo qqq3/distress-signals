@@ -32,6 +32,9 @@ public class LocationFragment extends Fragment
 
         locationManager =
                 (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        boolean isGPSEnabled =
+                locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
+                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         return v;
     }
