@@ -40,7 +40,7 @@ public class LocationFragment extends Fragment
                 (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         final boolean isGPSEnabled =
                 locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
-                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                        locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         latitudeTextView = (TextView) v.findViewById(R.id.latitude_content);
         longitudeTextView = (TextView) v.findViewById(R.id.longitude_content);
@@ -60,12 +60,50 @@ public class LocationFragment extends Fragment
         return v;
     }
 
+    public void onDestroy()
+    {
+        super.onDestroy();
+
+        if (ActivityCompat.checkSelfPermission(getActivity(),
+                                               Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                getActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locationManager.removeUpdates(mLocationListener);
+    }
     private LocationListener mLocationListener = new LocationListener()
     {
         @Override
         public void onLocationChanged(Location location)
         {
+            String latitude = String.format("%1.4f", location.getLatitude());
+            String longitude = String.format("%1.4f", location.getLongitude());
 
+            latitudeTextView.setText(latitude);
+            longitudeTextView.setText(longitude);
+
+            if (ActivityCompat.checkSelfPermission(getActivity(),
+                                                   Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    getActivity(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.removeUpdates(mLocationListener);
         }
 
         @Override
