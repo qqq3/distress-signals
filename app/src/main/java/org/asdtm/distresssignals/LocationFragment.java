@@ -13,11 +13,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LocationFragment extends Fragment
 {
     LocationManager locationManager;
+
+    private TextView latitudeTextView;
+    private TextView longitudeTextView;
+    private Button findCurrentLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -32,9 +38,24 @@ public class LocationFragment extends Fragment
 
         locationManager =
                 (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        boolean isGPSEnabled =
+        final boolean isGPSEnabled =
                 locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
                 locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        latitudeTextView = (TextView) v.findViewById(R.id.latitude_content);
+        longitudeTextView = (TextView) v.findViewById(R.id.longitude_content);
+        findCurrentLocation = (Button) v.findViewById(R.id.find_current_location);
+
+        findCurrentLocation.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (isGPSEnabled) {
+                    gpsRequestLocation();
+                }
+            }
+        });
 
         return v;
     }
