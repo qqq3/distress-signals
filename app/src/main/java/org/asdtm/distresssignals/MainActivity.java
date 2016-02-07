@@ -29,4 +29,10 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(MainActivity.this, LocationActivity.class);
         startActivity(intent);
     }
+
+    public void startCompassActivity(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, CompassActivity.class);
+        startActivity(intent);
+    }
 }
