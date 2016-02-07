@@ -2,14 +2,18 @@ package org.asdtm.distresssignals;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +57,8 @@ public class LocationFragment extends Fragment
             {
                 if (isGPSEnabled) {
                     gpsRequestLocation();
+                } else {
+                    showSettingsDialog();
                 }
             }
         });
@@ -79,6 +85,7 @@ public class LocationFragment extends Fragment
         }
         locationManager.removeUpdates(mLocationListener);
     }
+
     private LocationListener mLocationListener = new LocationListener()
     {
         @Override
@@ -146,5 +153,33 @@ public class LocationFragment extends Fragment
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,
                                                mLocationListener);
+    }
+
+    public void showSettingsDialog()
+    {
+        AlertDialog.Builder showSettings = new AlertDialog.Builder(getActivity());
+        showSettings.setTitle(R.string.settingsDialogTitle);
+        showSettings.setMessage(R.string.settingsDialogMessage);
+        showSettings.setPositiveButton(R.string.settingsDialog_positiveButton,
+                                       new DialogInterface.OnClickListener()
+                                       {
+                                           @Override
+                                           public void onClick(DialogInterface dialog, int which)
+                                           {
+                                               Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                               startActivity(intent);
+                                           }
+                                       });
+        showSettings.setNegativeButton(R.string.settingsDialog_negativeButton,
+                                       new DialogInterface.OnClickListener()
+                                       {
+                                           @Override
+                                           public void onClick(DialogInterface dialog, int which)
+                                           {
+                                               dialog.cancel();
+                                           }
+                                       });
+
+        showSettings.show();
     }
 }
