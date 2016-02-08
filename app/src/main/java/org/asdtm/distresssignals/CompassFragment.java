@@ -34,6 +34,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
     private float[] matrixValues;
     private float mCurrentDegree = 0f;
 
+    static final float ALPHA = 0.25f;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -80,15 +81,27 @@ public class CompassFragment extends Fragment implements SensorEventListener
         mSensorManager.unregisterListener(this, mMagnetometer);
     }
 
+    protected float[] lowPass( float[] input, float[] output )
+    {
+        if ( output == null ) return input;
+
+        for ( int i=0; i<input.length; i++ ) {
+            output[i] = output[i] + ALPHA * (input[i] - output[i]);
+        }
+        return output;
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event)
     {
         switch (event.sensor.getType()) {
             case Sensor.TYPE_ACCELEROMETER:
-                System.arraycopy(event.values, 0, valuesAccelerometer, 0, 3);
+                //System.arraycopy(event.values, 0, valuesAccelerometer, 0, 3);
+                valuesAccelerometer = lowPass(event.values.clone(), valuesAccelerometer);
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
-                System.arraycopy(event.values, 0, valuesMagneticField, 0, 3);
+                //System.arraycopy(event.values, 0, valuesMagneticField, 0, 3);
+                valuesMagneticField = lowPass(event.values.clone(), valuesMagneticField);
                 break;
         }
 
@@ -111,8 +124,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
                     Animation.RELATIVE_TO_SELF,
                     0.5f);
 
-            ra.setDuration(100);
-
+            ra.setDuration(500);
             ra.setFillAfter(true);
 
             mCompassImage.startAnimation(ra);
