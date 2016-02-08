@@ -102,16 +102,16 @@ public class CompassFragment extends Fragment implements SensorEventListener
 
             float azimuthInRadians = matrixValues[0];
             float azimuthInDegrees = (float) (Math.toDegrees(azimuthInRadians) + 360) % 360;
-            Log.d(TAG, "azimuthInDegrees" + azimuthInDegrees);
 
             RotateAnimation ra = new RotateAnimation(
                     mCurrentDegree,
                     -azimuthInDegrees,
-                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF,
+                    0.5f,
                     Animation.RELATIVE_TO_SELF,
                     0.5f);
 
-            ra.setDuration(250);
+            ra.setDuration(100);
 
             ra.setFillAfter(true);
 
