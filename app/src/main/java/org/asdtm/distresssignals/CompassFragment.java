@@ -124,7 +124,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
                     Animation.RELATIVE_TO_SELF,
                     0.5f);
 
-            ra.setDuration(500);
+            ra.setDuration(250);
             ra.setFillAfter(true);
 
             mCompassImage.startAnimation(ra);
