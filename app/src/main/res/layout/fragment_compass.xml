@@ -18,4 +18,5 @@
         android:layout_centerVertical="true"
         android:background="@drawable/compass"
         android:contentDescription="@string/compass_description"/>
+
 </RelativeLayout>
