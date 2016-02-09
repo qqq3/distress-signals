@@ -7,4 +7,5 @@
     <string name="settingsDialogMessage">GPS is not enabled. Do you want to go to settings menu?</string>
     <string name="settingsDialog_positiveButton">Settings</string>
     <string name="settingsDialog_negativeButton">Cancel</string>
+    <string name="compass_description">Compass</string>
 </resources>
