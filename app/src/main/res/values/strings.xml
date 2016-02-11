@@ -8,4 +8,5 @@
     <string name="settingsDialog_positiveButton">Settings</string>
     <string name="settingsDialog_negativeButton">Cancel</string>
     <string name="compass_description">Compass</string>
+    <string name="degree_sign">"\u00B0"</string>
 </resources>
