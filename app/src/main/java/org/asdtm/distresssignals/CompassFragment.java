@@ -129,7 +129,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
 
             mCompassImage.startAnimation(ra);
 
-            mAzimuth.setText("Azimuth: " + String.valueOf(azimuthInDegrees));
+            mAzimuth.setText(String.valueOf(azimuthInDegrees) + getResources().getString(R.string.degree_sign));
             mCurrentDegree = -azimuthInDegrees;
         }
     }
