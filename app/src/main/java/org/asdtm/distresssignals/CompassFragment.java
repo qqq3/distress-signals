@@ -16,6 +16,8 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class CompassFragment extends Fragment implements SensorEventListener
 {
     private static final String TAG = "CompassFragment";
@@ -126,10 +128,11 @@ public class CompassFragment extends Fragment implements SensorEventListener
 
             ra.setDuration(250);
             ra.setFillAfter(true);
-
             mCompassImage.startAnimation(ra);
 
-            mAzimuth.setText(String.valueOf(azimuthInDegrees) + getResources().getString(R.string.degree_sign));
+            String formatAzimuth = new DecimalFormat("#0.0").format(azimuthInDegrees);
+            mAzimuth.setText(formatAzimuth + getResources().getString(R.string.degree_sign));
+
             mCurrentDegree = -azimuthInDegrees;
         }
     }
