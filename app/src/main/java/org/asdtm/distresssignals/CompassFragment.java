@@ -61,6 +61,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
         appCompatActivity.setSupportActionBar(toolbar);
 
         assert appCompatActivity.getSupportActionBar() != null;
+        appCompatActivity.getSupportActionBar().setTitle(0);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_cancel);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
