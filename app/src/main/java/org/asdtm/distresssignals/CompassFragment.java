@@ -7,8 +7,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -37,6 +40,7 @@ public class CompassFragment extends Fragment implements SensorEventListener
     private float mCurrentDegree = 0f;
 
     static final float ALPHA = 0.25f;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -50,6 +54,14 @@ public class CompassFragment extends Fragment implements SensorEventListener
 
         mAzimuth = (TextView) v.findViewById(R.id.azimuth);
         mCompassImage = (ImageView) v.findViewById(R.id.compass_image);
+
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        appCompatActivity.setSupportActionBar(toolbar);
+
+        assert appCompatActivity.getSupportActionBar() != null;
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_cancel);
+        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -83,11 +95,11 @@ public class CompassFragment extends Fragment implements SensorEventListener
         mSensorManager.unregisterListener(this, mMagnetometer);
     }
 
-    protected float[] lowPass( float[] input, float[] output )
+    protected float[] lowPass(float[] input, float[] output)
     {
-        if ( output == null ) return input;
+        if (output == null) return input;
 
-        for ( int i=0; i<input.length; i++ ) {
+        for (int i = 0; i < input.length; i++) {
             output[i] = output[i] + ALPHA * (input[i] - output[i]);
         }
         return output;
@@ -142,4 +154,5 @@ public class CompassFragment extends Fragment implements SensorEventListener
     {
 
     }
+
 }
