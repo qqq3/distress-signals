@@ -8,9 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FindLocationButton">
-        <item name="android:background">@drawable/round_button</item>
-        <item name="android:src">@drawable/ic_find_location</item>
-    </style>
-
 </resources>
