@@ -49,7 +49,7 @@ public class FlashlightFragment extends Fragment
         assert appCompatActivity.getSupportActionBar() != null;
         appCompatActivity.getSupportActionBar().setTitle(0);
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_cancel);
-        appCompatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mOnOffFlash = (ToggleButton) v.findViewById(R.id.flashlight_on_off);
         mOnOffFlash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
