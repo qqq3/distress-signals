@@ -7,6 +7,12 @@ public class Location
 
     public Location(double latitude, double longitude)
     {
+        mLatitude = mLatitude;
+        mLongitude = mLatitude;
+    }
+
+    public Location()
+    {
         mLatitude = 1;
         mLongitude = 1;
     }
