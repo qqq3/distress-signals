@@ -32,14 +32,6 @@
                 android:layout_marginRight="10dp"
                 android:background="@color/colorAccent"/>
 
-            <Button
-                android:id="@+id/flashlight_signals"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/colorAccent"/>
         </TableRow>
     </TableLayout>
 
