@@ -47,10 +47,11 @@
         </TableRow>
     </TableLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/find_current_location"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        style="@style/FindLocationButton"/>
 </RelativeLayout>

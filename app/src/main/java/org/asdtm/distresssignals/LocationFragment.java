@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class LocationFragment extends Fragment
 
     private TextView latitudeTextView;
     private TextView longitudeTextView;
-    private Button findCurrentLocation;
+    private ImageButton findCurrentLocation;
     private boolean isGPSEnabled;
 
     @Override
@@ -70,7 +71,7 @@ public class LocationFragment extends Fragment
 
         latitudeTextView = (TextView) v.findViewById(R.id.latitude_content);
         longitudeTextView = (TextView) v.findViewById(R.id.longitude_content);
-        findCurrentLocation = (Button) v.findViewById(R.id.find_current_location);
+        findCurrentLocation = (ImageButton) v.findViewById(R.id.find_current_location);
 
         findCurrentLocation.setOnClickListener(new View.OnClickListener()
         {
