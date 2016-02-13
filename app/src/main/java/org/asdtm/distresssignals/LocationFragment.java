@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class LocationFragment extends Fragment
 {
     LocationManager locationManager;
@@ -121,8 +123,8 @@ public class LocationFragment extends Fragment
         @Override
         public void onLocationChanged(Location location)
         {
-            String latitude = String.format("%1.4f", location.getLatitude());
-            String longitude = String.format("%1.4f", location.getLongitude());
+            String latitude = new DecimalFormat("#0.0000").format(location.getLatitude());
+            String longitude = new DecimalFormat("#0.0000").format(location.getLongitude());
 
             mLocation.setLatitude(location.getLatitude());
             mLocation.setLongitude(location.getLongitude());
