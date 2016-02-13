@@ -24,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class LocationFragment extends Fragment
     LocationManager locationManager;
     org.asdtm.distresssignals.model.Location mLocation;
 
+    private ProgressBar mFinderProgressBar;
     private TextView latitudeTextView;
     private TextView longitudeTextView;
     private FloatingActionButton findCurrentLocation;
@@ -71,6 +73,8 @@ public class LocationFragment extends Fragment
         latitudeTextView = (TextView) v.findViewById(R.id.latitude_content);
         longitudeTextView = (TextView) v.findViewById(R.id.longitude_content);
         findCurrentLocation = (FloatingActionButton) v.findViewById(R.id.find_current_location);
+        mFinderProgressBar = (ProgressBar) v.findViewById(R.id.finder);
+        mFinderProgressBar.setVisibility(View.GONE);
 
         findCurrentLocation.setOnClickListener(new View.OnClickListener()
         {
@@ -79,6 +83,8 @@ public class LocationFragment extends Fragment
             {
                 if (isGPSEnabled) {
                     gpsRequestLocation();
+
+                    mFinderProgressBar.setVisibility(View.VISIBLE);
                 } else {
                     showSettingsDialog();
                 }
@@ -145,6 +151,8 @@ public class LocationFragment extends Fragment
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
+
+            mFinderProgressBar.setVisibility(View.GONE);
             locationManager.removeUpdates(mLocationListener);
         }
 

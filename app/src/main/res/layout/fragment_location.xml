@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <TableRow>
 
@@ -24,8 +24,8 @@
                 android:id="@+id/latitude_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/latitude_label"
                 android:layout_weight="0.2"
+                android:text="@string/latitude_label"
                 android:textSize="20sp"/>
 
             <TextView
@@ -33,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textColor="@color/compassTextColor"/>
+                android:textColor="@color/compassTextColor"
+                android:textSize="20sp"/>
         </TableRow>
 
         <TableRow>
@@ -43,8 +43,8 @@
                 android:id="@+id/longitude_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/longitude_label"
                 android:layout_weight="0.2"
+                android:text="@string/longitude_label"
                 android:textSize="20sp"/>
 
             <TextView
@@ -52,8 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:textColor="@color/compassTextColor"/>
+                android:textColor="@color/compassTextColor"
+                android:textSize="20sp"/>
         </TableRow>
     </TableLayout>
 
@@ -66,4 +66,10 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:src="@drawable/ic_find_location"/>
 
+    <ProgressBar
+        android:id="@+id/finder"
+        style="@android:style/Widget.Holo.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
