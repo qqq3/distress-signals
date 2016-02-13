@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
@@ -23,8 +24,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +36,7 @@ public class LocationFragment extends Fragment
 
     private TextView latitudeTextView;
     private TextView longitudeTextView;
-    private ImageButton findCurrentLocation;
+    private FloatingActionButton findCurrentLocation;
     private boolean isGPSEnabled;
 
     @Override
@@ -71,7 +70,7 @@ public class LocationFragment extends Fragment
 
         latitudeTextView = (TextView) v.findViewById(R.id.latitude_content);
         longitudeTextView = (TextView) v.findViewById(R.id.longitude_content);
-        findCurrentLocation = (ImageButton) v.findViewById(R.id.find_current_location);
+        findCurrentLocation = (FloatingActionButton) v.findViewById(R.id.find_current_location);
 
         findCurrentLocation.setOnClickListener(new View.OnClickListener()
         {
