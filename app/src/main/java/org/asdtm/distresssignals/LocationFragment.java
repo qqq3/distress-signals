@@ -13,10 +13,12 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -188,7 +190,8 @@ public class LocationFragment extends Fragment
                                            @Override
                                            public void onClick(DialogInterface dialog, int which)
                                            {
-                                               Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                               Intent intent = new Intent(
+                                                       Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                                                startActivity(intent);
                                            }
                                        });
@@ -203,5 +206,20 @@ public class LocationFragment extends Fragment
                                        });
 
         showSettings.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (NavUtils.getParentActivityName(getActivity()) != null) {
+                    NavUtils.navigateUpFromSameTask(getActivity());
+
+                    return true;
+                }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
