@@ -30,6 +30,7 @@ import android.widget.Toast;
 public class LocationFragment extends Fragment
 {
     LocationManager locationManager;
+    org.asdtm.distresssignals.model.Location mLocation;
 
     private TextView latitudeTextView;
     private TextView longitudeTextView;
@@ -47,6 +48,8 @@ public class LocationFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_location, parent, false);
+
+        mLocation = new org.asdtm.distresssignals.model.Location();
 
         Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
@@ -120,6 +123,9 @@ public class LocationFragment extends Fragment
         {
             String latitude = String.format("%1.4f", location.getLatitude());
             String longitude = String.format("%1.4f", location.getLongitude());
+
+            mLocation.setLatitude(location.getLatitude());
+            mLocation.setLongitude(location.getLongitude());
 
             latitudeTextView.setText(latitude);
             longitudeTextView.setText(longitude);
@@ -228,7 +234,7 @@ public class LocationFragment extends Fragment
 
                     return true;
                 }
-            default:
+           default:
                 return super.onOptionsItemSelected(item);
         }
     }
