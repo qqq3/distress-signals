@@ -5,8 +5,12 @@ import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,12 +34,22 @@ public class FlashlightFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_flashlight, parent, false);
+
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        appCompatActivity.setSupportActionBar(toolbar);
+
+        assert appCompatActivity.getSupportActionBar() != null;
+        appCompatActivity.getSupportActionBar().setTitle(0);
+        appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_cancel);
+        appCompatActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mOnOffFlash = (ToggleButton) v.findViewById(R.id.flashlight_on_off);
         mOnOffFlash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
@@ -158,6 +172,21 @@ public class FlashlightFragment extends Fragment
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (NavUtils.getParentActivityName(getActivity()) != null) {
+                    NavUtils.navigateUpFromSameTask(getActivity());
+
+                    return true;
+                }
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
