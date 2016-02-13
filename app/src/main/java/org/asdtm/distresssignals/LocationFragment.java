@@ -234,7 +234,13 @@ public class LocationFragment extends Fragment
 
                     return true;
                 }
-           default:
+            case R.id.share_location:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                                     "My coordinates!\nLatitude: " + mLocation.getLatitude() + "; Longitude: " + mLocation.getLongitude());
+                startActivity(Intent.createChooser(shareIntent, "Share coordinates"));
+            default:
                 return super.onOptionsItemSelected(item);
         }
     }
