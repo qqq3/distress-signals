@@ -29,6 +29,7 @@ public class FlashlightFragment extends Fragment
     private static String SOS = "0101010101010101010";
 
     private ToggleButton mOnOffFlash;
+    private Button mSosButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -59,18 +60,15 @@ public class FlashlightFragment extends Fragment
             {
                 if (!isChecked) {
                     offFlash();
+                    mSosButton.setEnabled(true);
                 } else {
                     onFlash();
+                    mSosButton.setEnabled(false);
                 }
             }
         });
 
-        if (!checkFlash(getActivity())) {
-            Toast.makeText(getActivity(), R.string.flashNotHasMessage, Toast.LENGTH_SHORT).show();
-            mOnOffFlash.setEnabled(false);
-        }
-
-        Button mSosButton = (Button) v.findViewById(R.id.sos_signal);
+        mSosButton = (Button) v.findViewById(R.id.sos_signal);
         mSosButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -79,6 +77,13 @@ public class FlashlightFragment extends Fragment
                 sosSignal();
             }
         });
+
+        if (!checkFlash(getActivity())) {
+            Toast.makeText(getActivity(), R.string.flashNotHasMessage, Toast.LENGTH_SHORT).show();
+            mOnOffFlash.setEnabled(false);
+            mSosButton.setEnabled(false);
+        }
+
         return v;
     }
 
@@ -155,6 +160,8 @@ public class FlashlightFragment extends Fragment
 
     private void sosSignal()
     {
+        mOnOffFlash.setEnabled(false);
+
         for (int i = 0; i < SOS.length(); i++) {
             if (SOS.charAt(i) == '0') {
                 offFlash();
@@ -173,6 +180,8 @@ public class FlashlightFragment extends Fragment
                 e.printStackTrace();
             }
         }
+
+        mOnOffFlash.setEnabled(true);
     }
 
     @Override
