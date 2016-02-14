@@ -18,19 +18,23 @@
 
             <ImageButton
                 android:id="@+id/flashlight_on_off"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-
-            <Button
-                android:id="@+id/sos_signal"
+                style="@style/ButtonFlash"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="SOS"
-                style="@style/ButtonSOS"/>
+                android:contentDescription="@null"/>
+
+            <Button
+                android:id="@+id/sos_signal"
+                style="@style/ButtonSOS"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/button_SOS"
+                android:textColor="#fff"
+                android:textSize="30sp"/>
 
         </TableRow>
     </TableLayout>
