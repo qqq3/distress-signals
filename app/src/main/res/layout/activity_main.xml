@@ -24,8 +24,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:onClick="startLocationActivity"/>
+                android:layout_marginRight="5dp"/>
 
             <ImageButton
                 android:id="@+id/ButtonFlashlightActivity"
@@ -33,8 +32,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:onClick="startFlashlightActivity"/>
+                android:layout_marginRight="5dp"/>
 
             <ImageButton
                 android:id="@+id/ButtonCompassActivity"
@@ -42,8 +40,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:onClick="startCompassActivity"/>
+                android:layout_marginRight="5dp"/>
         </TableRow>
     </TableLayout>
 
