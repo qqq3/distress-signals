@@ -18,7 +18,8 @@
         <TableRow
             android:gravity="center_horizontal|center_vertical">
 
-            <Button
+            <ImageButton
+                android:id="@+id/ButtonLocationActivity"
                 style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -26,7 +27,8 @@
                 android:layout_marginRight="5dp"
                 android:onClick="startLocationActivity"/>
 
-            <Button
+            <ImageButton
+                android:id="@+id/ButtonFlashlightActivity"
                 style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -34,7 +36,8 @@
                 android:layout_marginRight="5dp"
                 android:onClick="startFlashlightActivity"/>
 
-            <Button
+            <ImageButton
+                android:id="@+id/ButtonCompassActivity"
                 style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
