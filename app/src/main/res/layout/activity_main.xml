@@ -19,35 +19,28 @@
             android:gravity="center_horizontal|center_vertical">
 
             <Button
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/colorAccent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:onClick="startLocationActivity"/>
 
             <Button
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/colorAccent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:onClick="startFlashlightActivity"/>
-        </TableRow>
-
-        <TableRow
-            android:gravity="center_horizontal|center_vertical">
 
             <Button
+                style="@style/Button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/colorAccent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:onClick="startCompassActivity"/>
-
         </TableRow>
     </TableLayout>
 
