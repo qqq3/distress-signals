@@ -55,6 +55,7 @@ public class FlashlightFragment extends Fragment
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mOnOffFlash = (ImageButton) v.findViewById(R.id.flashlight_on_off);
+        mOnOffFlash.setImageResource(R.drawable.flash_off);
         mOnOffFlash.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -63,9 +64,11 @@ public class FlashlightFragment extends Fragment
                 if (isFlashOn) {
                     offFlash();
                     mSosButton.setEnabled(true);
+                    mOnOffFlash.setImageResource(R.drawable.flash_off);
                 } else {
                     onFlash();
                     mSosButton.setEnabled(false);
+                    mOnOffFlash.setImageResource(R.drawable.flash_on);
                 }
             }
         });
