@@ -10,4 +10,5 @@
     <string name="compass_description">Compass</string>
     <string name="degree_sign">"\u00B0"</string>
     <string name="menu_share">Share</string>
+    <string name="button_SOS">SOS</string>
 </resources>
