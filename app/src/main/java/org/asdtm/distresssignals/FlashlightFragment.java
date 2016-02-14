@@ -2,6 +2,7 @@ package org.asdtm.distresssignals;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -28,7 +30,7 @@ public class FlashlightFragment extends Fragment
 
     private static String SOS = "0101010101010101010";
 
-    private ToggleButton mOnOffFlash;
+    private ImageButton mOnOffFlash;
     private Button mSosButton;
 
     @Override
@@ -52,13 +54,13 @@ public class FlashlightFragment extends Fragment
         appCompatActivity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_cancel);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mOnOffFlash = (ToggleButton) v.findViewById(R.id.flashlight_on_off);
-        mOnOffFlash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        mOnOffFlash = (ImageButton) v.findViewById(R.id.flashlight_on_off);
+        mOnOffFlash.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            public void onClick(View v)
             {
-                if (!isChecked) {
+                if (isFlashOn) {
                     offFlash();
                     mSosButton.setEnabled(true);
                 } else {
