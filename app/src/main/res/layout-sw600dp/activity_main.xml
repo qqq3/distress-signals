@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="org.asdtm.distresssignals.MainActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TableRow
+            android:gravity="center_horizontal|center_vertical">
+
+            <ImageButton
+                android:id="@+id/ButtonLocationActivity"
+                style="@style/Button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:contentDescription="@null"/>
+
+            <ImageButton
+                android:id="@+id/ButtonFlashlightActivity"
+                style="@style/Button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:contentDescription="@null"/>
+
+            <ImageButton
+                android:id="@+id/ButtonCompassActivity"
+                style="@style/Button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:contentDescription="@null"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

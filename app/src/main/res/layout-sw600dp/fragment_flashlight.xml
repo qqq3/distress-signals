@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TableRow
+            android:gravity="center_horizontal|center_vertical">
+
+            <ImageButton
+                android:id="@+id/flashlight_on_off"
+                style="@style/ButtonFlash"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:contentDescription="@null"/>
+
+            <Button
+                android:id="@+id/sos_signal"
+                style="@style/ButtonSOS"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="@string/button_SOS"
+                android:textColor="#fff"
+                android:textSize="50sp"/>
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
