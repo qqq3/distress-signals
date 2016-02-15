@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity
         ImageButton compassButton = (ImageButton) findViewById(R.id.ButtonCompassActivity);
 
         locationButton.setImageResource(R.drawable.ic_location_button);
+        flashlightButton.setImageResource(R.drawable.flash_on);
+        compassButton.setImageResource(R.drawable.ic_compass);
 
         locationButton.setOnClickListener(new View.OnClickListener()
         {
