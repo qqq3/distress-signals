@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="org.asdtm.distresssignals.MainActivity">
+    tools:context="org.asdtm.distresssignals.MainActivity"
+    android:background="@drawable/background">
 
     <include layout="@layout/toolbar"/>
 
