@@ -13,7 +13,8 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@drawable/compass"/>
+        android:background="@drawable/compass"
+        android:contentDescription="@null"/>
 
     <TextView
         android:id="@+id/azimuth"
